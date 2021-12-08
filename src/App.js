@@ -20,7 +20,7 @@ componentWillMount() {
 
   render() {
     return <div className="App">
-      {this.state.users.map(user => <div>{user.cell}</div>)}
+      {this.state.users.map(user => <div>{user.email}</div>)}
     </div>
   }
 }
