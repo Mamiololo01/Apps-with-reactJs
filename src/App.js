@@ -11,11 +11,17 @@ class App extends Component {
   }
 
 componentWillMount() {
-  axios('https://api.randomuser.me/?nat=US&results=5').then(response => console.log(response))
+  axios('https://api.randomuser.me/?nat=US&results=5')
+  .then(response => this.setState({
+    users: response.data.results
+  })
+  );
 }
 
   render() {
-    return <div className="App">We will be back</div>
+    return <div className="App">
+      {this.state.users.map(user => <div>{user.cell}</div>)}
+    </div>
   }
 }
 
