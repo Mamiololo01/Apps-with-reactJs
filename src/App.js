@@ -3,25 +3,34 @@ import axios from 'axios'
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     // state
     this.state = {
       users: []
-    }
+    };
   }
 
-componentWillMount() {
-  axios('https://api.randomuser.me/?nat=US&results=5')
-  .then(response => this.setState({
+
+    getUsers() {
+      axios('https://api.randomuser.me/?nat=US&results=5') .then(response => this.setState({
     users: response.data.results
   })
   );
+    }
+
+componentWillMount() {
+  this.getUsers();
 }
 
   render() {
-    return <div className="App">
-      {this.state.users.map(user => <div>{user.email}</div>)}
-    </div>
+    return <div className="App">{this.state.users.map(user => 
+      
+      <div>
+        <h3>{user.name.first}</h3>
+        <p>{user.email}</p>
+        <hr />
+        </div>
+    )}</div>;
   }
 }
 
