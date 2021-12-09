@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Loading } from './Loading';
+
 
 class App extends Component {
   constructor(props) {
@@ -29,14 +31,20 @@ componentWillMount() {
 }
 
   render() {
-    return <div className="App">{!this.state.loading && this.state.users.map(user => 
+    return <div className="App">{!this.state.loading ?? this.state.users.map(user => 
       
       <div>
         <h3>{user.name.first}</h3>
         <p>{user.email}</p>
         <hr />
+        <form onSubmit={this.handleSubmit}>
+          <input type="submit" value="load users"/>
+        </form>
         </div>
-    )}</div>;
+
+    )}
+    <Loading message= "hey hey hey"/>
+    </div>
   }
 }
 
