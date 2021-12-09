@@ -1,5 +1,5 @@
 import React from 'react'
 
-const Loading = () => <h2>Loading</h2>
+export const Loading = props => <h2>{props.message}</h2>;
 
 export default Loading;
